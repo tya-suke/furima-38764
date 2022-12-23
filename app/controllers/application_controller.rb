@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   
   def index
-    rooot"posts#index"
   end
 
   private
