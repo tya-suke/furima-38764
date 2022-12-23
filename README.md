@@ -7,14 +7,14 @@
 | family_name_kana   | string  | null: false             |
 | first_name_kana    | string  | null: false             |
 | email              | string  | null: false,unique: true|
-| encrypted_password | integer | null: false             |
-| nick name          | string  | null: false             |
+| encrypted_password | string  | null: false             |
+| nick_name          | string  | null: false             |
 | birth_day          | date    | null: false             |
 
 ### Association
 - has_many : items
-- has_many : customers
-- belongs_to : card
+- has_many : cards
+
 
 
 ## items テーブル
@@ -46,7 +46,6 @@
 | user_id         | references |  null: false                    |
 
 ### Association
-- belongs_to :user
 - belongs_to :card
 
 
