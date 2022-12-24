@@ -24,18 +24,17 @@
 | product             | string  | null: false |
 | info                | text    | null: false |
 | price               | integer | null: false |
+| Category_id         ｜integer | null: false,
 | condition_id        | integer | null: false |
 | postage_type_id     | integer | null: false |
-|shipping_charge_id   | integer | null: false |
-|ship_from_address_id | integer | null: false |
 |days_to_ship_id      | integer | null: false |
-| user                |references|null: false |
-| card                |references|null: false |
-| prefecture_id       | string  | null: false |
+| user                |references|null: false,foreign_key: true | 
+| prefecture_id       | integer  | null: false |
 
 ### Association
 - belongs_to : user 
 - has_one : customer
+- belongs_to_active_hash :Category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :postage_type
 - belongs_to_active_hash :prefecture
@@ -45,28 +44,28 @@
 
 ## customers テーブル
 
-| Column          | Type       | Options                        |
-| ----------------| ---------- | ------------------------------ |
-| post_code       | string     | null: false                    |
-| city            | string     ｜ null: false                    |
-| address     　   | references | null: false, foreign_key: true |    
-| building_name   | string     ｜                                |
-| prefecture      | string     ｜ null: false                    |
-| phon_number     | string     ｜ null: false                    |
-| card          　| references | null: false ,foreign_key: true  |                   |
+| Column         | Type       | Options                        |
+| ---------------| ---------- | ------------------------------ |
+| post_code      | string     | null: false                    |
+| city           | string     ｜ null: false                    |
+| address     　 | string      | null: false                    |    
+| building_name  | string     ｜                                |
+| prefecture_id  | integer    ｜ null: false                    |
+| phon_number    | string     ｜ null: false                    |
+| card           | references  | null: false ,foreign_key: true |                   |
 
 ### Association
-- has_one :card
+- belongs_to : card
 
 
 
 
-## card テーブル
+## cards テーブル
 
 | Column      | Type       | Options                        |
 | -------     | ---------- | ------------------------------ |
-| users        | reference | null: false, foreign_key: true |                              |
-| items       | reference | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |                              |
+| item       | references  | null: false, foreign_key: true |
 
 ### Association
 - belongs_to : user
