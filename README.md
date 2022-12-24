@@ -24,7 +24,7 @@
 | product             | string  | null: false |
 | info                | text    | null: false |
 | price               | integer | null: false |
-| Category_id         ｜integer | null: false,
+| category_id         ｜integer | null: false,
 | condition_id        | integer | null: false |
 | postage_type_id     | integer | null: false |
 |days_to_ship_id      | integer | null: false |
@@ -34,7 +34,7 @@
 ### Association
 - belongs_to : user 
 - has_one : customer
-- belongs_to_active_hash :Category
+- belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :postage_type
 - belongs_to_active_hash :prefecture
