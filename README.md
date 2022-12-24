@@ -13,7 +13,7 @@
 
 ### Association
 - has_many :items
-- has_one :cards
+- has_many :cards
 
 
 
@@ -22,15 +22,15 @@
 | Column              | Type    | Options     |
 | --------------------| ------  | ----------- |
 | product             | string  | null: false |
-| photo               | text    | null: false |
-| Category　          ｜ string  | null: false |
+| info                | text    | null: false |
 | price               | integer | null: false |
-| condition_id        | string  | null: false |
+| condition_id        | integer | null: false |
 | postage_type_id     | integer | null: false |
 |shipping_charges_id  | integer | null: false |
-|ship-from address_id | integer | null: false |
+|ship_from_address_id | integer | null: false |
 |days_to_Ship_id      | integer | null: false |
-| user                | string  | null: false |
+| user                | references | null: false |
+
 
 ### Association
 - belongs_to : user 
@@ -51,15 +51,15 @@
 | first_name      | string     | null: false                    |
 | post_code       | string     | null: false                    |
 | city            | string     ｜ null: false                    |
-| address     　 | references | null: false, foreign_key: true |    
+| address     　   | references | null: false, foreign_key: true |    
 | building name   | string     ｜                                |
 | prefecture      | string     ｜ null: false                    |
 | phon_number     | string     ｜ null: false                    |
-| user_id         | string     |  null: false                    |
+| user            | string     |  null: false                    |
+| itemes          | references | null: false                     |
 
 ### Association
-- belongs_to : user 
-- has_one :card
+- belongs_to :card
 
 
 
@@ -69,8 +69,8 @@
 | Column      | Type       | Options                        |
 | -------     | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |                              |
-| product     | references | null: false, foreign_key: true |
+| items       | references | null: false, foreign_key: true |
 
 ### Association
-- has_one : user
-- has_one : item
+- belongs_to : user
+- belongs_to : item
