@@ -43,6 +43,16 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "First name kana can't be blank"
     end
+    it "first_name_kanaのフリガナは全角（カタカナ）でなければ登録できない" do
+      @user.first_name_kana = "aiueo"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name kana は全角カタカナを使用して下さい"
+    end
+    it "family_name_kanaのフリガナは全角（カタカナ）でなければ登録できない" do
+      @user. family_name_kana = "aiueo"
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Family name kana は全角カタカナを使用して下さい"
+    end
     it 'birth_dayが空では登録できない' do
       @user.birth_day = ''
       @user.valid?
@@ -64,7 +74,7 @@ RSpec.describe User, type: :model do
       @user.password = '1234a'
       @user.password_confirmation = '1234a'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      expect(@user.errors.full_messages).to include "Password is too short (minimum is 6 characters)"
     end
 
 
