@@ -9,10 +9,8 @@ class User < ApplicationRecord
 validates :birth_day, presence: true
 
   
-  with_options presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: '@を含めて入力してください' }  do
-          validates :email
-  end
-with_options presence: true, format: { with:/\A[一-龥ぁ-ん]/,message:'全角文字を使用してください'} do
+  
+with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ ,message:'全角文字を使用してください'} do
     validates :family_name, presence: true
     validates :first_name, presence: true
 end
