@@ -6,17 +6,17 @@ development:
   <<: *default
   adapter: mysql2
   username: root
-  password:
+  password: 
   host: localhost
-  database: ajax_app_development
+  database: furima-38764_development
 
 test:
   <<: *default
   adapter: mysql2
   username: root
-  password:
+  password: 
   host: localhost
-  database: ajax_app_test
+  database: furima-38764_test
 
 production:
   <<: *default
