@@ -13,7 +13,7 @@ RSpec.describe Item, type: :model do
 
     context '出品ができない時' do
       it 'imageが空だと出品できない' do
-        @item.image = '' 
+        @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Image can't be blank"
       end
@@ -56,6 +56,26 @@ RSpec.describe Item, type: :model do
         @item.category_id = '' 
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
+      end
+      it '価格に半角数字以外が含まれている場合は出品できない（※半角数字以外が一文字でも含まれていれば良い）' do
+        @item.price = "１１"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price should be half-width numbers"
+      end
+      it '価格が299以下だと出品できない' do
+        @item.price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include 
+      end
+      it '価格が9_999_999円を超えると出品できない' do
+        @item.price = 100000000 
+        @item.valid?
+        expect(@item.errors.full_messages).to include 
+      end
+      it 'userが紐付いていなければ出品できない' do
+        @item.user= nil 
+        @item.valid?
+        expect(@item.errors.full_messages).to include "User must exist"
       end
     end
   end
