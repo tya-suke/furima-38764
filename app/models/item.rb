@@ -1,3 +1,21 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :user 
+  has_one :customer
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :postage_type
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :days_to_Ship 
 
-end
+  validates :image, presence: true 
+  validates :product, presence: true
+  validates :info, presence: true
+  validates :price, presence: true
+  validates :category_id, presence: true
+  validates :condition_id, presence: true
+  validates :postage_type_id, presence: true
+  validates :prefecture_id, presence: true
+  validates :days_to_ship_id, presence: true
+
+  end

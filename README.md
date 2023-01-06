@@ -24,7 +24,7 @@
 | product             | string  | null: false |
 | info                | text    | null: false |
 | price               | integer | null: false |
-| category_id         ｜integer | null: false,
+| category_id         ｜integer | null: false |
 | condition_id        | integer | null: false |
 | postage_type_id     | integer | null: false |
 |days_to_ship_id      | integer | null: false |
