@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-#  extend ActiveHash::Associations::ActiveRecordExtensions
-#  belongs_to :user 
+ extend ActiveHash::Associations::ActiveRecordExtensions
+ belongs_to :user 
   # has_one :customer
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :days_to_Ship 
   has_one_attached :image
 
-  validates :price, numericality:{ with: /\A[0-9]+\z/, message: 'should be half-width numbers' }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image, presence: true
   validates :product, presence: true
   validates :info, presence: true
@@ -19,5 +19,5 @@ class Item < ApplicationRecord
   validates :postage_type_id, presence: true
   validates :prefecture_id, presence: true
   validates :days_to_ship_id, presence: true
-  validates :price, numericality: {greater_than: 300,less_than: 9,999,999}
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   end

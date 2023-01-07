@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
       image {"aa"}
       product       {"apple"}
-      price            {111}
+      price            {400}
       info          {"aaa"}
       condition_id      {1}
       postage_type_id   {1}
