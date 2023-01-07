@@ -25,13 +25,13 @@ class ItemsController < ApplicationController
     return if user_signed_in?
   end
 
+  def show
+    @item = Item.find(params[:id])
   end
 
-
-
-
-private
-def item_params
-    params.require(:item).permit(:image, :product, :info, :price, :category_id, :condition_id,:postage_type_id,:days_to_ship_id, :prefecture_id).merge(user_id: current_user.id)
+  private
+  def item_params
+      params.require(:item).permit(:image, :product, :info, :price, :category_id, :condition_id,:postage_type_id,:days_to_ship_id, :prefecture_id).merge(user_id: current_user.id)
   end
 
+  end
