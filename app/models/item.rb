@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
  extend ActiveHash::Associations::ActiveRecordExtensions
  belongs_to :user 
-  # has_one :customer
+  #  has_one :customer
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage_type
@@ -19,4 +19,10 @@ class Item < ApplicationRecord
   validates :postage_type_id, presence: true
   validates :prefecture_id, presence: true
   validates :days_to_ship_id, presence: true
+
+  validates :category_id,numericality:  { other_than: 0 } 
+validates :condition_id,numericality:  { other_than: 0 } 
+validates :postage_type_id,numericality:  { other_than: 0 } 
+validates :prefecture_id, numericality: { other_than: 0 } 
+validates :days_to_ship_id, numericality: { other_than: 0 } 
   end
