@@ -1,15 +1,18 @@
 class CustomersController < ApplicationController
     before_action :authenticate_user!, except: :index
-    before_action :customer_params, only: :create
+  
   
     def index
-      @customer = Customer.all
+      @item = Item.find(params[:item_id])
+      @customer_form = CustomerForm.new
     end
   
     def create
-      @customer = Customer.new(customer_params)
-      if @customer.valid?
-        @customer.save
+      @item = Item.find(params[:item_id])
+      @customer_form = CustomerForm.new(customer_params)
+      if @customer_form.valid?
+
+        @customer_form.save
         redirect_to root_path
       else
         render :index
@@ -19,7 +22,7 @@ class CustomersController < ApplicationController
   private
   
     def customer_params
-      params.require(:customer).permit()
+      params.require(:customer_form).permit(:post_code, :city, :address, :building_name, :prefecture_id, :phone_number, :card).merge(user_id: current_user.id)
+
     end
-  
 end

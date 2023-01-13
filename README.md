@@ -51,7 +51,7 @@
 | address     　 | string      | null: false                    |    
 | building_name  | string     ｜                                |
 | prefecture_id  | integer    ｜ null: false                    |
-| phon_number    | string     ｜ null: false                    |
+| phone_number    | string     ｜ null: false                    |
 | card           | references  | null: false ,foreign_key: true |                   |
 
 ### Association

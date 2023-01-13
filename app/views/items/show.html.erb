@@ -10,7 +10,7 @@
       <%= image_tag @item.image ,class:"item-box-img" %>
 
       
-      <% if @items.present? %>
+     <% if @item.product %>
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
@@ -34,8 +34,9 @@
 
         <%= link_to "削除", item_path(@item), method: :delete, class:"item-destroy" %>
 
-      <% else %>
-        
+       <% else %> 
+        <%# <%= link_to "売り切れました",item_path(@item),class:"disabled-button bold" %> %>
+    
         <%= link_to "購入画面に進む",  item_customers_path(@item), class:"item-red-btn"%>
       <% end %>   
     <% end %>
