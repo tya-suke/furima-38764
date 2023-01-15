@@ -20,8 +20,9 @@ class CustomerForm
 
   def save
     # 各テーブルにデータを保存する処理を書く
-     card = Card.create(user_id: user_id, item_id: item_id)
+      card = Card.create(user_id: user_id, item_id: item_id)
      # 住所を保存する
-     customer.create( post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number)
+      # ストロングパラメーターでデータが運ばれ、それらが保存のタイミングで「card_id」が生成され、保存される。
+      Customer.create(card_id: card.id, post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number)
   end
 end

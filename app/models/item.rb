@@ -3,6 +3,7 @@ class Item < ApplicationRecord
  
 belongs_to :user 
 has_one :customer
+has_one :card
 
   belongs_to_active_hash :category
   belongs_to_active_hash :condition

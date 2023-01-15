@@ -4,9 +4,11 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-// require("@rails/activestorage").start()
+
+require("@rails/activestorage").start()
 require("channels")
 require("../validation")
+require("../card.js");
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
