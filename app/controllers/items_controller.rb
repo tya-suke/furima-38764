@@ -21,9 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-      if @item.card.present?
-        redirect_to root_path
-      end
+    
   end
 
   def edit
