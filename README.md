@@ -33,7 +33,7 @@
 
 ### Association
 - belongs_to : user 
-- has_one : customer
+- has_one : card
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :postage_type
