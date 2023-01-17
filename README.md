@@ -33,7 +33,7 @@
 
 ### Association
 - belongs_to : user 
-- has_one : customer
+- has_one : card
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :postage_type
@@ -51,7 +51,7 @@
 | address     　 | string      | null: false                    |    
 | building_name  | string     ｜                                |
 | prefecture_id  | integer    ｜ null: false                    |
-| phon_number    | string     ｜ null: false                    |
+| phone_number    | string     ｜ null: false                    |
 | card           | references  | null: false ,foreign_key: true |                   |
 
 ### Association
@@ -64,7 +64,7 @@
 
 | Column      | Type       | Options                        |
 | -------     | ---------- | ------------------------------ |
-| user        | references | null: false, foreign_key: true |                              |
+| user        | references | null: false foreign_key:true |                              |
 | item       | references  | null: false, foreign_key: true |
 
 ### Association
