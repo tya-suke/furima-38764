@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
     def index
       @customer_form = CustomerForm.new
       if @item.user_id = current_user
-        redirect_to root_path
+        
       end
     end
   
