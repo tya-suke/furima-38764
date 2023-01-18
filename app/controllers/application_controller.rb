@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def new
   end
 
+  
   def create
     @user = login(params[:email], params[:password])
     if @user
