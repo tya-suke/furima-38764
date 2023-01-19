@@ -1,7 +1,8 @@
 class CustomersController < ApplicationController
     before_action :authenticate_user!
     before_action :non_purchased_item, only: [:index, :create]
-  
+    before_action :prevent_url, only: [:index, :create]
+
     def index 
       @card = @item.card
       if @item.user_id == current_user || !@card.nil?
@@ -40,5 +41,9 @@ class CustomersController < ApplicationController
     def non_purchased_item
       @item = Item.find(params[:item_id])
     end
-
+    def prevent_url
+      if @item.user_id == current_user.id || @item.card != nil
+        redirect_to root_path
+      end
+    end
 end

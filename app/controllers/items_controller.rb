@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  
+  # before_action :prevent_url, only: [:index, :create]
   
   def index
   @items = Item.order("created_at DESC")
@@ -28,14 +28,6 @@ class ItemsController < ApplicationController
     @card = @item.card
     redirect_to root_path if @item.user_id != current_user.id || !@card.nil?
   end
-    # if current_user.id != @item.user_id
-      # redirect_to root_path
-    # end 
-    # @card = @item.card
-    # if @card.present?
-        # redirect_to root_path
-    # end
-  # end
 
   def update
     @item.update(item_params)
@@ -64,5 +56,9 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
+  # def prevent_url
+    # if @item.user_id == current_user.id || @item.card != nil
+      # redirect_to root_path
+    # end
+  # end
 end
