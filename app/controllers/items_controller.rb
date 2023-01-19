@@ -24,13 +24,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @item.user_id
-      redirect_to root_path
-    end
-    if @item.card.present?
-        redirect_to root_path
-      end
+    @card = @item.card
+    redirect_to root_path if @item.user_id != current_user.id || !@card.nil?
   end
+    # if current_user.id != @item.user_id
+      # redirect_to root_path
+    # end 
+    # @card = @item.card
+    # if @card.present?
+        # redirect_to root_path
+    # end
+  # end
 
   def update
     @item.update(item_params)
