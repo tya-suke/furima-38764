@@ -2,11 +2,12 @@ class CustomersController < ApplicationController
     before_action :authenticate_user!
     before_action :non_purchased_item, only: [:index, :create]
   
-    def index
-      @customer_form = CustomerForm.new
-      if @item.user_id = current_user
-        redirect_to root_path
+    def index 
+      @card = @item.card
+      if @item.user_id == current_user || !@card.nil?
+          redirect_to root_path
       end
+      @customer_form = CustomerForm.new
     end
   
     def create
@@ -18,7 +19,7 @@ class CustomersController < ApplicationController
       else
         render :index
       end
-  end
+    end
   
   private
   
@@ -34,10 +35,10 @@ class CustomersController < ApplicationController
           card: customer_params[:token],    # カードトークン
           currency: 'jpy'                 # 通貨の種類（日本円）
         )
-  end
+    end
 
-  def non_purchased_item
-    @item = Item.find(params[:item_id])
-  end
+    def non_purchased_item
+      @item = Item.find(params[:item_id])
+    end
 
 end
