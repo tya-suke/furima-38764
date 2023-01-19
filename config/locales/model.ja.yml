@@ -1,0 +1,8 @@
+ja:
+  attributes:
+    post_code: 郵便番号
+    city: 市区町村
+    prefecture_id: 都道府県
+    token: カード情報
+    phone_number: 電話番号
+    address: 住所
